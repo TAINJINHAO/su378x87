@@ -1,0 +1,9 @@
+{
+  "name": "su378x87",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "@cherrydotfun/miniapp-sdk": "latest",
+    "@solana/web3.js": "latest"
+  }
+}
