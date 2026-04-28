@@ -42,16 +42,23 @@ async function main() {
             continue;
         }
 
-        if (mode === "attack") {
-            // 進攻模式：隨機分散下注 6-8 組 (模擬 v6.9 邏輯)
-            const groupCount = Math.floor(Math.random() * 3) + 6;
-            for (let i = 0; i < groupCount; i++) {
-                const target = Math.floor(Math.random() * 9);
-                await cherry.bet(target, CONFIG.betAmount);
-                await new Promise(r => setTimeout(r, 2000));
-            }
+if (mode === "attack") {
+            console.log(`⚔️ 第 #${new Date().getMinutes()} 分鐘戰鬥：打包 9 格下注...`);
+            
+            // 建立 9 格下注的任務陣列
+            // CONFIG.betAmount 是 0.001
+            const betPromises = Array.from({ length: 9 }, (_, i) => {
+                return cherry.bet(i, CONFIG.betAmount).catch(err => {
+                    console.log(`⚠️ 第 ${i+1} 格發送失敗: ${err.message}`);
+                });
+            });
+
+            // 同時併發送出，確保紀錄留在這一回合
+            await Promise.all(betPromises);
+            console.log("✅ 本回合 9 格已全數完成打包下注");
+
         } else if (mode === "fun") {
-            // 娛樂模式：單點下注
+            // 娛樂模式：維持單點下注
             const target = Math.floor(Math.random() * 9);
             await cherry.bet(target, CONFIG.betAmount);
         }
