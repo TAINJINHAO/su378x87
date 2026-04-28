@@ -5,7 +5,7 @@ const CONFIG = {
     prefix: "3hk",        // 你的地址前綴
     atkGap: 3000,         // 進攻門檻
     funGap: 4500,         // 娛樂門檻
-    betAmount: 0.01       // 每次下注金額
+    betAmount: 0.001       // 每次下注金額
 };
 
 async function getLeaderboardStatus() {
