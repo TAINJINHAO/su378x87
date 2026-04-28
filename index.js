@@ -3,8 +3,8 @@ const { CherrySDK } = require('@cherry-fun/sdk');
 // 配置參數 (對應你 v6.9 的設定)
 const CONFIG = {
     prefix: "3hk",        // 你的地址前綴
-    atkGap: 3000,         // 進攻門檻
-    funGap: 4500,         // 娛樂門檻
+    atkGap: 4200,         // 進攻門檻
+    funGap: 4800,         // 娛樂門檻
     betAmount: 0.001       // 每次下注金額
 };
 
